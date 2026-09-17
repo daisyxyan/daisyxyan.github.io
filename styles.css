@@ -5,8 +5,26 @@
 }
 
 @font-face {
-  font-family: "ZT Nature";
-  src: local("ZT Nature"), local("ZTNature-Regular"), url("assets/fonts/ZTNature-Regular.otf") format("opentype");
+  font-family: "Maison Neue";
+  src: local("Maison Neue"), local("Maison Neue Book"), url("assets/fonts/MaisonNeue-Book.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Satoshi";
+  src: local("Satoshi"), local("Satoshi Regular"), url("assets/fonts/Satoshi-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Satoshi";
+  src: local("Satoshi Bold"), url("assets/fonts/Satoshi-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
   font-display: swap;
 }
 
@@ -40,7 +58,7 @@ body {
   margin: 0;
   background: var(--bg);
   color: var(--ink);
-  font: 400 0.95rem/1.52 Arial, Helvetica, sans-serif;
+  font: 400 0.86rem/1.42 "Helvetica Neue", Helvetica, Arial, sans-serif;
   letter-spacing: 0;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
@@ -95,7 +113,7 @@ img {
 }
 
 .page {
-  width: min(100% - 32px, 760px);
+  width: min(100% - 48px, 720px);
   margin: 0 auto;
   padding: 80px 0 40px;
 }
@@ -125,19 +143,18 @@ img {
 .wordmark {
   color: var(--ink);
   display: block;
-  width: clamp(18rem, 56vw, 34rem);
+  width: auto;
   max-width: 100%;
-  line-height: 0;
+  font-family: "Satoshi", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: clamp(3.6rem, 9.9vw, 6.5rem);
+  font-weight: 700;
+  line-height: 0.78;
   text-decoration: none;
+  white-space: nowrap;
 }
 
 .wordmark:hover {
   color: var(--ink);
-}
-
-.wordmark img {
-  width: 100%;
-  height: auto;
 }
 
 .nav,
@@ -154,16 +171,17 @@ img {
 .nav a,
 .link-row a,
 .link-row span {
-  font-family: "ZT Nature", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Satoshi", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 0.9rem;
   color: var(--muted);
   display: inline-flex;
   align-items: center;
   text-decoration: none;
-  text-transform: uppercase;
+  text-transform: none;
 }
 
 .nav a {
-  line-height: 0;
+  font-weight: 700;
 }
 
 .nav a:hover,
@@ -172,39 +190,10 @@ img {
   color: var(--ink);
 }
 
-.nav-label-image {
-  width: auto;
-  height: 1.15em;
-  max-width: none;
-  opacity: 0.42;
-  transition: opacity 150ms ease;
-}
-
-.nav-label-about {
-  transform: translateY(-0.12em);
-}
-
-.nav-label-publications {
-  height: 0.96em;
-}
-
-.nav a:hover .nav-label-image,
-.nav a[aria-current="page"] .nav-label-image {
-  opacity: 1;
-}
-
 .intro {
   display: grid;
-  grid-template-columns: 144px minmax(0, 1fr);
   align-items: start;
-  gap: 32px;
-  margin-bottom: 40px;
-}
-
-.profile-block {
-  display: grid;
-  gap: 14px;
-  justify-items: start;
+  margin-bottom: 64px;
 }
 
 .intro-copy {
@@ -214,7 +203,7 @@ img {
 
 h1,
 h3 {
-  font-size: 1rem;
+  font-size: 0.95rem;
   line-height: 1.5;
   font-weight: 400;
 }
@@ -225,12 +214,17 @@ h3 {
 
 h2 {
   color: var(--ink);
-  font-family: "ZT Nature", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 0.875rem;
+  font-family: "Satoshi", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 0.9rem;
   line-height: 1.45;
-  font-weight: 460;
+  font-weight: 700;
   margin-bottom: 16px;
-  text-transform: uppercase;
+  text-transform: none;
+}
+
+#current-heading,
+#contact-heading {
+  color: #000000;
 }
 
 .image-heading {
@@ -239,34 +233,25 @@ h2 {
   align-items: center;
 }
 
-.section-label-image {
-  display: block;
-  width: auto;
-  height: 1.12em;
-  max-width: 100%;
-}
-
 p {
   max-width: 48rem;
 }
 
 .current-summary {
-  font-size: 0.9rem;
+  font-size: 0.84rem;
 }
 
 .photo-strip {
   display: grid;
-  grid-template-columns:
-    minmax(0, 900fr) minmax(0, 900fr) minmax(0, 871fr)
-    minmax(0, 900fr) minmax(0, 900fr) minmax(0, 900fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   align-items: start;
   gap: 6px;
-  max-width: 48rem;
-  margin-top: 24px;
+  max-width: 24rem;
+  margin: 24px auto 0;
 }
 
 .photo-strip.sketch-strip {
-  grid-template-columns: repeat(6, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   margin-top: 6px;
 }
 
@@ -275,17 +260,17 @@ p {
   height: auto;
 }
 
-.photo-caption {
-  margin-top: 8px;
-  color: var(--muted);
-  font-size: 0.72rem;
-  line-height: 1.35;
+.photo-strip:not(.sketch-strip) img {
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
 }
 
-.portrait {
-  width: 144px;
-  height: auto;
-  border-radius: 0;
+.photo-caption {
+  max-width: 24rem;
+  margin: 8px auto 0;
+  color: var(--muted);
+  font-size: 0.68rem;
+  line-height: 1.35;
 }
 
 .social-links {
@@ -327,6 +312,14 @@ p {
 
 .section {
   margin-top: 40px;
+}
+
+#currently {
+  margin-top: 0;
+}
+
+#contact {
+  margin-top: 72px;
 }
 
 .first-section {
@@ -397,34 +390,6 @@ p {
   margin-bottom: 0;
 }
 
-.contact-note {
-  position: relative;
-  width: min(100%, 18.5rem);
-  margin-top: 2px;
-}
-
-.contact-note-image {
-  width: 100%;
-  height: auto;
-}
-
-.contact-note-email {
-  position: absolute;
-  left: 53.5%;
-  top: 60%;
-  transform: translate(-50%, -50%);
-  color: var(--link);
-  font-size: 1.08rem;
-  line-height: 1;
-  text-decoration-color: rgba(47, 143, 131, 0.38);
-  white-space: nowrap;
-}
-
-.contact-note-email:hover {
-  color: var(--link-hover);
-  text-decoration-color: currentColor;
-}
-
 .footer {
   align-items: center;
   justify-content: space-between;
@@ -485,7 +450,7 @@ p {
 
 @media (max-width: 640px) {
   .page {
-    width: min(100% - 32px, 760px);
+    width: min(100% - 32px, 720px);
     padding-top: 40px;
   }
 
@@ -494,21 +459,6 @@ p {
     margin-bottom: 40px;
   }
 
-  .intro {
-    grid-template-columns: 120px minmax(0, 1fr);
-    gap: 24px;
-  }
-
-  .portrait {
-    width: 120px;
-    height: auto;
-  }
-
-  .photo-strip {
-    grid-template-columns:
-      minmax(0, 900fr) minmax(0, 900fr) minmax(0, 871fr)
-      minmax(0, 900fr) minmax(0, 900fr) minmax(0, 900fr);
-  }
 }
 
 @media (max-width: 520px) {
